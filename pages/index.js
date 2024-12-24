@@ -21,7 +21,20 @@ export default function Home() {
           {user ? (
             <Link href="/api/auth/logout">Logout</Link>
           ) : (
-            <Link href="/api/auth/login">Login</Link>
+            <>
+              <Link
+                className="mr-4 rounded-md bg-emerald-500 px-4 py-2 text-white hover:bg-emerald-600"
+                href="/api/auth/login"
+              >
+                Login
+              </Link>
+              <Link
+                className="rounded-md bg-emerald-500 px-4 py-2 text-white hover:bg-emerald-600"
+                href="/api/auth/signup"
+              >
+                Sign up
+              </Link>
+            </>
           )}
         </div>
       </div>
