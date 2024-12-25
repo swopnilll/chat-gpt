@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { getSession } from "@auth0/nextjs-auth0";
 
 export default function Home() {
   const { isLoading, error, user } = useUser();
@@ -41,3 +42,19 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context.req, context.res);
+
+  if (!!session) {
+    return {
+      redirect: {
+        destination: "/chat",
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
